@@ -92,3 +92,7 @@ The extension communicates with `127.0.0.1` (your own computer) only, unless you
 - **Browser/CORS error:** configure the local server to accept requests from the PenguinMod editor's origin. The extension cannot bypass browser security.
 - **Model not found:** run the available-models block and paste the exact returned name into `use model [ ]`.
 - **Reply is empty:** check the `local AI error` reporter; some servers use different model identifiers or API settings.
+
+## Go Online
+
+- https://adhrit-roomcast-screen-share-v1-0-0.onrender.com
