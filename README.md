@@ -49,39 +49,6 @@ The host chooses a room size from 2 to 8 people (including the host). Guests ent
 
 Rooms and codes live in the server's memory and are removed when the host leaves or the server restarts. Roomcast does not have persistent user accounts.
 
----
-
-# Local LM AI for PenguinMod
-
-A custom PenguinMod extension that sends prompts to models running on **your own computer**. It contains no API key, cloud endpoint, analytics, or remote AI service.
-
-It supports:
-
-- [LM Studio](https://lmstudio.ai/) using its local OpenAI-compatible server (default `http://127.0.0.1:1234`)
-- [Ollama](https://ollama.com/) (default `http://127.0.0.1:11434`)
-- Any local server that implements OpenAI's `/v1/chat/completions` and `/v1/models` endpoints
-
-## Install in PenguinMod
-
-1. Start your local model server and load/download a model.
-   - **LM Studio:** Start **Developer → Start Server**.
-   - **Ollama:** Run `ollama serve` if it is not already running, then download a model such as `ollama pull llama3.2`.
-2. Open the PenguinMod editor → Extensions → **Load Custom Extension**.
-3. Select **Local File** and choose [local-lm-ai.js](local-lm-ai.js). Load it **unsandboxed** so the browser may request your local server.
-4. In the new **Local LM AI** block category, choose your provider. This automatically sets its usual local server URL.
-5. Run `available local models`, copy a model name into `use model [ ]`, then use `ask local AI [ ] and wait`. Read the response with `last AI reply`.
-
-## Example script
-
-```text
-when green flag clicked
-use local provider [Ollama]
-set AI instructions to [Answer briefly and child-safely.]
-use model [llama3.2]
-ask local AI [Give me a fun riddle about penguins.] and wait
-say (last AI reply) for (10) seconds
-```
-
 ## Privacy and safety
 
 The extension communicates with `127.0.0.1` (your own computer) only, unless you deliberately change the server block. A local model may still give inaccurate or unsuitable answers; provide appropriate instructions and do not use its replies for safety-critical decisions.
