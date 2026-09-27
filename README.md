@@ -49,10 +49,6 @@ The host chooses a room size from 2 to 8 people (including the host). Guests ent
 
 Rooms and codes live in the server's memory and are removed when the host leaves or the server restarts. Roomcast does not have persistent user accounts.
 
-## Privacy and safety
-
-The extension communicates with `127.0.0.1` (your own computer) only, unless you deliberately change the server block. A local model may still give inaccurate or unsuitable answers; provide appropriate instructions and do not use its replies for safety-critical decisions.
-
 ## Go Online
 
 - https://adhrit-roomcast-screen-share-v1-0-0.onrender.com
