@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101116">
+  <title>Roomcast — share a screen together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/room-enhancements.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Roomcast home"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="m16 10 5-3v10l-5-3z"/></svg></span><span>roomcast<span class="brand-period">.</span></span></a>
+      <div class="topbar-note"><span class="status-dot"></span> Private rooms · No account needed</div>
+    </header>
+
+    <main id="home-view" class="home-view">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR SPACE, YOUR SCREEN</div>
+          <h1>Good things<br>are better <span>shared.</span></h1>
+          <p class="hero-description">Start a room, invite your people with one simple code, and put your screen in the middle of the conversation.</p>
+          <div class="hero-points"><span><i class="check-icon">✓</i> Instant rooms</span><span><i class="check-icon">✓</i> Up to 8 people</span><span><i class="check-icon">✓</i> No downloads</span></div>
+        </div>
+
+        <section class="entry-card" aria-label="Start or join a room">
+          <div class="card-tabs" role="tablist"><button class="tab active" id="create-tab" type="button" role="tab" aria-selected="true">Create a room</button><button class="tab" id="join-tab" type="button" role="tab" aria-selected="false">Join a room</button></div>
+          <form id="create-form" class="entry-form">
+            <div class="form-heading"><span class="form-icon purple-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><div><h2>Your room starts here</h2><p>Set it up in a few seconds.</p></div></div>
+            <label for="host-name">Your name</label><input id="host-name" maxlength="24" placeholder="e.g. Alex" autocomplete="name" required>
+            <label for="room-size">How many people, including you?</label><div class="select-wrap"><select id="room-size"><option value="2">2 people</option><option value="3">3 people</option><option value="4" selected>4 people</option><option value="5">5 people</option><option value="6">6 people</option><option value="7">7 people</option><option value="8">8 people</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></div>
+            <button class="primary-button" type="submit">Create your room <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            <p class="form-footnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Your room is private. Only people with your code can join.</p>
+          </form>
+          <form id="join-form" class="entry-form hidden">
+            <div class="form-heading"><span class="form-icon mint-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-11.1 6.6L4 19l1.1-4.1A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg></span><div><h2>Come on in</h2><p>Enter the room code from your host.</p></div></div>
+            <label for="guest-name">Your name</label><input id="guest-name" maxlength="24" placeholder="e.g. Jamie" autocomplete="name" required>
+            <label for="room-code">Room code</label><input id="room-code" class="code-input" maxlength="6" placeholder="ABC123" autocomplete="off" spellcheck="false" required>
+            <button class="primary-button mint-button" type="submit">Join the room <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            <p class="form-footnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Codes are private to each room.</p>
+          </form>
+          <div id="home-error" class="error-message" role="alert"></div>
+        </section>
+      </section>
+      <footer class="home-footer"><span>Made for the moments you want to share.</span><span class="footer-right"><span class="status-dot"></span> Your browser does the sharing</span></footer>
+    </main>
+
+    <main id="room-view" class="room-view hidden">
+      <header class="room-header"><div class="room-title"><button class="back-button" id="leave-room" aria-label="Leave room"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div><div class="eyebrow room-eyebrow">LIVE ROOM</div><h1 id="room-heading">Your room</h1></div></div><div class="room-actions"><div class="room-code-wrap"><span class="code-caption">ROOM CODE</span><button id="copy-code" class="room-code" title="Copy room code"><span id="room-code-display">------</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button></div><button id="share-screen" class="share-button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4m-3-10 3-3 3 3m-3-3v7"/></svg><span>Share screen</span></button></div></header>
+      <div class="room-layout"><section class="stage-column"><div id="stage" class="stage"><div id="stage-empty" class="stage-empty"><div class="empty-illustration"><div class="screen-shape"><span class="screen-line"></span><span class="screen-line short"></span><span class="screen-line"></span><span class="screen-button"></span></div><div class="spark spark-one">✦</div><div class="spark spark-two">✦</div></div><div class="stage-empty-copy"><div id="stage-kicker" class="eyebrow">READY WHEN YOU ARE</div><h2 id="stage-title">Your screen goes here.</h2><p id="stage-description">Share your screen to get the conversation started. Everyone in the room can follow along.</p></div></div><div id="video-grid" class="video-grid"></div><div id="tile-nav" class="tile-nav hidden" aria-label="Screen share pages"><button id="tile-prev" type="button" aria-label="Previous screen shares">&lt;</button><span id="tile-page-label">1 / 1</span><button id="tile-next" type="button" aria-label="Next screen shares">&gt;</button></div><div class="stage-bottom"><span class="live-label"><span class="status-dot"></span><span id="stage-status">ROOM IS OPEN</span></span><span id="stage-hint" class="stage-hint">Waiting for a screen to be shared</span></div></div><div class="room-tip"><span class="tip-icon">✦</span><span><strong>Little tip</strong> — Choose a browser tab when sharing to include its audio.</span></div></section>
+      <aside class="people-panel"><div class="people-heading"><div><h2>In this room</h2><p id="people-count">1 of 4 people</p></div><span class="people-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.9a4 4 0 0 1 0 7.8m4 10v-2a4 4 0 0 0-3-3.9"/></svg></span></div><div id="people-list" class="people-list"></div>
+        <section class="chat-card" aria-label="Room chat"><div class="chat-heading"><div><h3>Room chat</h3><p>Messages are shared with everyone</p></div><span class="chat-live"><span class="status-dot"></span> LIVE</span></div><div id="chat-messages" class="chat-messages" aria-live="polite"><div id="chat-empty" class="chat-empty">Say hello to everyone in the room 👋</div></div><form id="chat-form" class="chat-form"><input id="chat-input" maxlength="1000" placeholder="Write a message…" aria-label="Write a chat message" autocomplete="off"><button type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg></button></form></section>
+        <div class="invite-card"><span class="invite-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><h3>Bring someone in</h3><p>Send them your room code and they can join instantly.</p><button id="invite-copy" class="invite-button">Copy invite code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button></div><div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>Your room stays private</strong><br>Only people with your code can join.</span></div></aside></div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
